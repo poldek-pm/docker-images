@@ -1,6 +1,6 @@
 FROM registry.gitlab.com/pld-linux/pld
 
-RUN poldek --noask -n th -iv rpm-devel zstd-devel check-devel
+RUN poldek --noask -n th -iv rpm-devel zstd-devel check-devel libxml2-devel
 
 # Set environment variables.
 ENV HOME /root
