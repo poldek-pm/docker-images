@@ -1,6 +1,10 @@
 FROM registry.gitlab.com/pld-linux/pld
 
-RUN poldek --noask -n th -u rpm-devel zstd-devel check-devel libxml2-devel
+RUN poldek --noask -n th -u rpm-devel zstd-devel check-devel libxml2-devel git-core autoconf automake libtool \ 
+           ca-certificates gettext-autopoint make findutils check-devel pkgconfig ncurses-devel readline-devel openssl-devel \
+           file
+
+RUN poldek -n th --clean
 
 # Set environment variables.
 ENV HOME /root
