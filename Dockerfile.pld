@@ -6,7 +6,7 @@ RUN poldek --noask --noprogress -n th -u \
             git-core ca-certificates autoconf automake libtool gettext-autopoint \ 
             pkgconfig make \
             make less findutils file \
-            xmlto w3m docbook-dtd412 xmlto w3m docbook2X texinfo swig-python 
+            xmlto w3m docbook-dtd412-xml xmlto w3m docbook2X texinfo swig-python 
 
 RUN poldek -n th --clean
 
