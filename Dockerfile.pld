@@ -1,8 +1,12 @@
 FROM registry.gitlab.com/pld-linux/pld
 
-RUN poldek --noask -n th -u rpm-devel zstd-devel check-devel libxml2-devel git-core autoconf automake libtool \ 
-           ca-certificates gettext-autopoint make findutils check-devel pkgconfig ncurses-devel readline-devel openssl-devel \
-           file
+RUN poldek --noask --noprogress -n th -u \
+            rpm-devel zstd-devel check-devel libxml2-devel \
+            ncurses-devel readline-devel openssl-devel check-devel  \
+            git-core ca-certificates autoconf automake libtool gettext-autopoint \ 
+            pkgconfig make \
+            make less findutils file \
+            xmlto w3m docbook-dtd412 xmlto w3m docbook2X texinfo swig-python 
 
 RUN poldek -n th --clean
 
