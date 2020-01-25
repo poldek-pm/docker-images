@@ -3,7 +3,8 @@ FROM registry.gitlab.com/pld-linux/pld
 RUN poldek --noask --noprogress -n th -u \
             rpm-devel zstd-devel check-devel libxml2-devel \
             ncurses-devel readline-devel openssl-devel check-devel  \
-            git-core ca-certificates autoconf automake libtool gettext-autopoint \
+            git-core ca-certificates openssh-clients \
+            autoconf automake libtool gettext-autopoint \
             pkgconfig make less findutils file \
             xmlto w3m docbook-dtd412-xml xmlto w3m docbook2X texinfo perl-XML-Simple \
             swig-python fakeroot
