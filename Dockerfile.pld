@@ -7,13 +7,14 @@ RUN poldek --noask --noprogress -n th -u \
             autoconf automake libtool gettext-autopoint \
             pkgconfig make less findutils file \
             xmlto w3m docbook-dtd412-xml xmlto w3m docbook2X texinfo perl-XML-Simple \
-            swig-python fakeroot
+            swig-python fakeroot rpm-build-tools
 
 RUN poldek -n th --clean
+RUN mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS,packages}
 
 # Set environment variables.
 ENV HOME /root
-ENV LC_ALL C.UTF-8
+ENV LC_ALL C
 
 # Define working directory.
 WORKDIR /root
