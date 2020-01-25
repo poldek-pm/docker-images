@@ -11,7 +11,7 @@ RUN yum update -y && \
 RUN yum install -y auto{conf,make} ctags elfutils gcc{,-c++} gettext gettext-devel intltool libtool make patch{,utils} && \
     yum install -y redhat-rpm-config rpm-{build,sign} spectool && \
     yum install -y git yum-utils && \
-    yum -y --enablerepo=epel-testing install rpm-devel zlib-devel zstd libzstd-devel check-devel \
+    yum -y --enablerepo=epel-testing install rpm-devel zlib-devel zstd libzstd-devel check-devel fakeroot \
              rpm-devel readline-devel openssl-devel pcre-devel libxml2-devel xmlto docbook-dtds && \
     yum clean all
 
@@ -19,9 +19,9 @@ RUN mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS}
 
 # Set environment variables.
 ENV HOME /root
+ENV LC_ALL C.UTF-8
 
 # Define working directory.
 WORKDIR /root
 
 CMD ["bash"]
-

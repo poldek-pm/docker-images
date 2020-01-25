@@ -3,15 +3,16 @@ FROM registry.gitlab.com/pld-linux/pld
 RUN poldek --noask --noprogress -n th -u \
             rpm-devel zstd-devel check-devel libxml2-devel \
             ncurses-devel readline-devel openssl-devel check-devel  \
-            git-core ca-certificates autoconf automake libtool gettext-autopoint \ 
+            git-core ca-certificates autoconf automake libtool gettext-autopoint \
             pkgconfig make less findutils file \
             xmlto w3m docbook-dtd412-xml xmlto w3m docbook2X texinfo perl-XML-Simple \
-            swig-python 
+            swig-python fakeroot
 
 RUN poldek -n th --clean
 
 # Set environment variables.
 ENV HOME /root
+ENV LC_ALL C.UTF-8
 
 # Define working directory.
 WORKDIR /root
