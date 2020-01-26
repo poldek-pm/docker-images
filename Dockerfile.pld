@@ -10,7 +10,7 @@ RUN poldek --noask --noprogress -n th -u \
             swig-python fakeroot rpm-build-tools
 
 RUN poldek -n th --clean
-RUN mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SRPMS,SPECS,packages}
+RUN mkdir -p ~/rpm/{BUILD,RPMS,SOURCES,SRPMS,SPECS,packages}
 
 # Set environment variables.
 ENV HOME /root
