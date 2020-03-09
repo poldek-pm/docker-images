@@ -1,15 +1,16 @@
 FROM registry.gitlab.com/pld-linux/pld
 
-RUN poldek --noask --noprogress -n th -u \
+RUN set -x \
+    && poldek --noask --noprogress -n th -u \
             rpm-devel zstd-devel check-devel libxml2-devel \
             ncurses-devel readline-devel openssl-devel check-devel  \
             git-core ca-certificates openssh-clients \
             autoconf automake libtool gettext-autopoint \
             pkgconfig make less findutils file \
             xmlto w3m docbook-dtd412-xml xmlto w3m docbook2X texinfo perl-XML-Simple \
-            swig-python fakeroot rpm-build-tools
+            swig-python fakeroot rpm-build-tools \
+    && poldek --clean-whole
 
-RUN poldek -n th --clean
 RUN mkdir -p ~/rpm/{BUILD,RPMS,SOURCES,SRPMS,SPECS,packages}
 
 # Set environment variables.
