@@ -1,9 +1,14 @@
-name: Build and push 
+name: Build and push
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 0 * * 1'
+
+push:
+  paths:
+    - 'Dockerfile'
+    - '.github/workflows/build-image.yml'
 
 jobs:
   build:

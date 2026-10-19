@@ -1,23 +1,15 @@
 FROM registry.gitlab.com/pld-linux/pld
 
 RUN set -x \
-    && poldek --noask --noprogress -n th -u \
-            rpm-devel zstd-devel check-devel libxml2-devel \
-            ncurses-devel readline-devel openssl-devel check-devel  \
-            git-core ca-certificates openssh-clients \
-            autoconf automake libtool gettext-autopoint \
-            pkgconfig make less findutils file \
-            xmlto w3m docbook-dtd412-xml xmlto w3m docbook2X texinfo perl-XML-Simple \
-            swig-python fakeroot rpm-build-tools \
-    && poldek --clean-whole
-
-RUN mkdir -p ~/rpm/{BUILD,RPMS,SOURCES,SRPMS,SPECS,packages}
+    && echo -e '#!/bin/sh\n# w/o for texlive depencency loop' > /usr/bin/texhash && chmod 755 /usr/bin/texhash
+    && poldek --noask --noprogress -u findutils coreutils && poldek --noask --noprogress -Orpmdef="_pkgverify_flags 0" -u ca-certificates git-core libstdc++ fakeroot autoconf automake libtool rpm-build-tools bzip2-devel check-devel docbook-dtd412-xml docbook2X gettext-autopoint gettext-tools glibc-devel libgomp-devel libxml2-devel lua54-devel ncurses-devel openssl-devel pcre-devel perl-XML-Simple perl-base perl-modules pkgconfig popt-devel readline-devel rpm-devel tar gzip texinfo xmlto xz zlib-devel zstd-devel python3 python3-cryptography curl nodejs
+    && poldek clean
 
 # Set environment variables.
-ENV HOME /root
-ENV LC_ALL C
+ENV HOME=/root
+ENV LC_ALL=C
 
 # Define working directory.
 WORKDIR /root
 
-CMD ["bash"]
+CMD ["/bin/sh"]
